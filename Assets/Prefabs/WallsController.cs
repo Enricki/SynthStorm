@@ -19,7 +19,7 @@ public class WallsController : MonoBehaviour
         
         Wall wall = Instantiate(wallPrefab, this.transform);
         wall.transform.position = new Vector3 (wall.gridSpacingOffset * 10, 0);
-        wall.GenerateWall();
+        wall.GenerateGrid();
         yield return new WaitForSeconds(TimeStep);
         Repeat();
     }

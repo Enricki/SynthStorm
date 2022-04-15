@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Spawner: MonoBehaviour 
 {
-    public Grid gridPrefab;
+    public GameField gridPrefab;
     //public Wall wallPrefab;
     public Player playerPrefab;
 
-    Grid grid;
+    GameField grid;
     Player player;
 
     public void Spawn()

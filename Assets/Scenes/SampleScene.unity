@@ -1466,8 +1466,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63c0bbb74fcac944a8e21c198805d64e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridPrefab: {fileID: 507199133390174945, guid: 914288e270981204292833056a3330cf, type: 3}
-  playerPrefab: {fileID: 7885664561199522716, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
+  gridPrefab: {fileID: -8353258864161869827, guid: 914288e270981204292833056a3330cf, type: 3}
+  playerPrefab: {fileID: 800387902688388803, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
 --- !u!114 &1153381762
 MonoBehaviour:
   m_ObjectHideFlags: 0

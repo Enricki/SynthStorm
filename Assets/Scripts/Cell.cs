@@ -6,7 +6,7 @@ public class Cell: MonoBehaviour
 {
     Vector2 size = Vector2.one;
     public bool visible = true;
-
+    Cell cell;
     public Vector2 Size
     {
         get
@@ -18,6 +18,16 @@ public class Cell: MonoBehaviour
             size = value;
         }
     }
-    
+
+
+    private void Start()
+    {
+        cell = GetComponent<Cell>();
+    }
+
+    public void SetInvisible()
+    {
+        Debug.Log("To you");
+    }
 
 }

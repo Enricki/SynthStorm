@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Wall : Grid, IMovable
+public class Wall : Grid
 {
     float speed = 5;
     [SerializeField]
@@ -29,18 +30,41 @@ public class Wall : Grid, IMovable
     }
 
 
+    public override void GenerateGrid()
+    {
+        base.GenerateGrid();
+
+        for (int i = 0; i < 3; i++)
+        {
+            int removeIndex = Random.Range(0, cells.Count);
+            Cell cell = Instantiate(brick, transform);
+            cell.transform.localPosition = cells[removeIndex].transform.localPosition;
+            Destroy(cells[removeIndex].gameObject);
+            cells.RemoveAt(removeIndex);
+            cells.Add(cell);
+        }
+
+        ShuffleBricks();
+    }
+
     public void DestoySelf()
     {
         Destroy(this.gameObject);
     }
-    public void GenerateWall()
-    {
-        GenerateGrid();
-        int removeIndex = Random.Range(0, cells.Count);
-        Destroy(cells[removeIndex].gameObject);
-        cells.RemoveAt(removeIndex);
-        ShuffleBricks();
-    }
+    //public void GenerateWall()
+    //{
+    //    for (int i = 0; i < 3; i++)
+    //    {
+    //        int removeIndex = Random.Range(0, cells.Count);
+    //        Cell cell = Instantiate(brick, transform);
+    //        cell.transform.localPosition = cells[removeIndex].transform.localPosition;
+    //        Destroy(cells[removeIndex].gameObject);
+    //        cells.RemoveAt(removeIndex);
+    //        cells.Add(cell);
+    //    }
+
+    //    ShuffleBricks();
+    //}
 
 
     private void OnTriggerEnter2D(Collider2D collision)

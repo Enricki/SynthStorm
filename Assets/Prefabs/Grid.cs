@@ -13,7 +13,7 @@ public class Grid : MonoBehaviour
 
     public List<Cell> cells = new List<Cell>();
 
-    public void GenerateGrid()
+    public virtual void GenerateGrid()
     {
         gridOrigin = -new Vector3(gridSize.x / 2, gridSize.y / 2) * gridSpacingOffset;
         gridBorders = new Vector3(gridSize.x * gridSpacingOffset - gridSpacingOffset, gridSize.y * gridSpacingOffset - gridSpacingOffset) + gridOrigin;
