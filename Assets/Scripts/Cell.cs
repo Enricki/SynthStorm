@@ -27,7 +27,7 @@ public class Cell: MonoBehaviour
 
     public void SetInvisible()
     {
-        Debug.Log("To you");
+        this.gameObject.SetActive(false);
     }
 
 }

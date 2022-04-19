@@ -7,8 +7,8 @@ using UnityEngine.Events;
 public class Wall : Grid
 {
     float speed = 5;
-    [SerializeField]
-    private UnityEvent Actions;
+    //[SerializeField]
+    //private UnityEvent Actions;
 
     public Cell brick;
 
@@ -67,12 +67,11 @@ public class Wall : Grid
     //}
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("Done!");
-        Actions?.Invoke();
-        GetComponent<BoxCollider2D>().enabled = false;
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    Actions?.Invoke();
+    //    GetComponent<BoxCollider2D>().enabled = false;
+    //}
 
     void ShuffleBricks()
     {

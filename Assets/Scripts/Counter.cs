@@ -27,7 +27,7 @@ public class Counter : MonoBehaviour
 
     public void IncreseCount()
     {
-        inc++;
+        inc*=2;
         GetComponent<TMP_Text>().text = score + inc;
     }
 

@@ -50,21 +50,6 @@ MonoBehaviour:
   gridOrigin: {x: 0, y: 0, z: 0}
   gridBorders: {x: 0, y: 0, z: 0}
   cells: []
-  Actions:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: fd2a64f353cf9404d94065bf136635c7, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: EventInit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   brick: {fileID: -3483610060674368342, guid: 336b679279f4a2e4cbbac781282cae69, type: 3}
 --- !u!61 &536435867142191790
 BoxCollider2D:
@@ -73,7 +58,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062577199026120314}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1

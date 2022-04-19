@@ -19,9 +19,9 @@ public class GameEvent : ScriptableObject
 
     public void EventInit()
     {
-        foreach(GameEventListener listener in listeners)
+        foreach(var item in listeners)
         {
-            listener.EventRaised();
+            item.EventRaised();
         }
     }
 }
