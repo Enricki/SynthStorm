@@ -13,13 +13,13 @@ public class BrickDisplay : MonoBehaviour
 
     private void Start()
     {
+        UpdateDisplay(brickData);
+    }
+
+    public void UpdateDisplay(BrickData brickData)
+    {
         background.color = brickData.BackColor;
         icon.sprite = brickData.Icon;
         brickText.text = brickData.Text;
-    }
-
-    public void SetDisplay()
-    {
-
     }
 }

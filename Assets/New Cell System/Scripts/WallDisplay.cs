@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class WallDisplay : MonoBehaviour
 {
-    public WallData wallData;
+    public List<WallData> wallData;
+
+    private WallData activeWallData;
 
     private CustomList<Vector3> randomCoords;
 
@@ -14,6 +16,15 @@ public class WallDisplay : MonoBehaviour
 
     public void ShuffleBriks()
     {
+        int randomIndex = Random.Range(0, wallData.Count);
+        activeWallData = wallData[randomIndex];
+        Wall wall = new Wall(activeWallData);
+        for (int j = 0; j < wall.BricksInWall.Count; j++)
+        {
+            displays[j].UpdateDisplay(wall.BricksInWall[j]);
+        }
+
+
         RandomizedList<Vector3> bufferRandom = new RandomizedList<Vector3>(randomCoords);
         bufferRandom.Clone(randomCoords);
         randomCoords.Clear();
@@ -26,21 +37,23 @@ public class WallDisplay : MonoBehaviour
     }
     public void InstantiateWall()
     {
-        Wall wall = new Wall(wallData);
+        int randomIndex = Random.Range(0, wallData.Count);
+        activeWallData = wallData[randomIndex];
+        Wall wall = new Wall(activeWallData);
+        
 
-        GridCoordinates grid = new GridCoordinates(wallData.WallSize, wallData.SpacingOffset);
+        GridCoordinates grid = new GridCoordinates(activeWallData.WallSize, activeWallData.SpacingOffset);
         randomCoords = new RandomizedList<Vector3>(grid.Coords);
         randomCoords.Clone(grid.Coords);
 
         for (int i = 0; i < wall.BricksInWall.Count; i++)
         {
-            BrickDisplay brick = Instantiate(wallData.BrickPrefab, transform);
+            BrickDisplay brick = Instantiate(activeWallData.BrickPrefab, transform);
             brick.brickData = wall.BricksInWall[i];
             brick.transform.localPosition = randomCoords[i];
             displays.Add(brick);
         }
     }
-
 
     private void Start()
     {
