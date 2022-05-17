@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4132a07d622d4a54abcd9bd935848be0, type: 3}
+  m_Name: Death + Lootables 8x1
+  m_EditorClassIdentifier: 
+  Wallname: Death + Lootables 8/1
+  brickPrefab: {fileID: 7585217145321474924, guid: d8897b00b6b709b459b9e410401e7947, type: 3}
+  wallSize: {x: 6, y: 9}
+  spacingOffset: 1.1
+  wallSettings:
+  - brickData: {fileID: 11400000, guid: f60670dc3fc04d14d9c3bfd0927e3e49, type: 2}
+    bricksCount: 8
+  - brickData: {fileID: 11400000, guid: 3337693fdc1e5294b99a10263e2847db, type: 2}
+    bricksCount: 1

@@ -1,31 +1,64 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WallsController : MonoBehaviour
 {
-    public Wall wallPrefab;
+    [SerializeField]
+    int wallsInScene;
+    [SerializeField]
+    WallDisplay wallPrefab;
+    [SerializeField]
+    private List<Levels> levels;
 
-    int TimeStep = 2;
-    List<Wall> Walls = new List<Wall>();
-    Wall currentWall;
+    private List<WallDisplay> walls = new List<WallDisplay>();
 
+    private int TimeStep = 4;
+
+    Vector3 spawnPosition;
+    private void Start()
+    {
+        Repeat();
+    }
+
+    public void GenerateWalls()
+    {
+
+    }
     public void Repeat()
     {
         StartCoroutine(SpawnWalls());
     }
+
     IEnumerator SpawnWalls()
     {
-        
-        Wall wall = Instantiate(wallPrefab, this.transform);
-        wall.transform.position = new Vector3 (wall.gridSpacingOffset * 10, 0);
-        wall.GenerateGrid();
+        GenerateNewWall();
         yield return new WaitForSeconds(TimeStep);
         Repeat();
     }
 
-    public void Destroy()
+    public void GenerateNewWall()
     {
-        StopAllCoroutines();
+        int randomDataIndex = Random.Range(0, levels[0].Walls.Count);
+        WallDisplay wallDisplay = Instantiate(wallPrefab, transform);
+        spawnPosition = wallDisplay.transform.position;
+        wallDisplay.wallData = levels[0].Walls[randomDataIndex];
+        Debug.Log(wallDisplay.wallData);
+//        wallDisplay.GenerateWall();   
+        walls.Add(wallDisplay);
     }
 }
+
+
+[System.Serializable]
+public class Levels
+{
+    public string name;
+
+    [SerializeField]
+    List<WallData> walls;
+
+    public List<WallData> Walls { get => walls; }
+}
+

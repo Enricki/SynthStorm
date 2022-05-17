@@ -2,10 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameField : Grid
+public class GameField : MonoBehaviour
 {
-    public override void GenerateGrid()
+    [SerializeField]
+    private Cell CellPrefab;
+    [SerializeField]
+    private Vector2Int fieldSize;
+    [SerializeField]
+    private float spacingOffset;
+
+    private List<Cell> cells = new List<Cell>();
+
+    private void Start()
     {
-        base.GenerateGrid();
+        GenerateField();
+    }
+
+    private void GenerateField()
+    {
+        GridCoordinates grid = new GridCoordinates(fieldSize, spacingOffset);
+        for (int i = 0; i < grid.Coords.Count; i++)
+        {
+            Cell cell = Instantiate(CellPrefab, transform);
+            cell.transform.position = grid.Coords[i];
+            cells.Add(cell);
+        }
     }
 }

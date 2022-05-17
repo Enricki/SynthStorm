@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7985472279896524949}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: 4.4, y: 4.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 93619a987cbb7454ca335a32168699e1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: da02fe4798b0b9348bad247e480f4109, type: 3}
   m_Color: {r: 0.9686275, g: 0.8000001, b: 0.30980393, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6700d91b184ce74e9d55fd988be4fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visible: 1
 --- !u!114 &8696206927752232827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,9 +108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bae3f52e14fb3d48a8f02bac60e7a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bias: 45
-  timeStep: 1
-  timeToBeat: 0.05
-  restSmoothTime: 4
-  beatScale: {x: 0.7, y: 0.7, z: 0.7}
-  restScale: {x: 0.4, y: 0.4, z: 0.4}
+  bias: 12
+  timeStep: 0.7
+  timeToBeat: 0.15
+  restSmoothTime: 2
+  beatScale: {x: 1.09, y: 1.09, z: 1.09}
+  restScale: {x: 1, y: 1, z: 1}

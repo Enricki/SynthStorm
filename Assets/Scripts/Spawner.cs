@@ -15,7 +15,7 @@ public class Spawner: MonoBehaviour
     {
         grid = Instantiate(gridPrefab, null);
         grid.transform.position = Vector3.zero;
-        grid.GenerateGrid();
+//        grid.GenerateGrid();
 
 
         //Wall wall = Instantiate(wallPrefab, null);
