@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
-    [SerializeField]
-    private Transform destinationTransform;
-
-    public void TeleportToSpawn(Transform tpTransform)
+    public void TeleportToSpawn(Teleporter teleporter)
     {
-        tpTransform.position = destinationTransform.position;
+        teleporter.transform.position = teleporter.StartPosition;
+    }
+
+    public void TeleportOnPoint(Teleporter teleporter)
+    {
+        teleporter.transform.position = teleporter.regularTPPosition;
     }
 }

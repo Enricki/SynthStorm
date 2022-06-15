@@ -5,11 +5,23 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody2D selfRigidbody;
-    public int score = 2;
-
-    private void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        selfRigidbody = GetComponent<Rigidbody2D>();
+        collision.gameObject.SetActive(false);
+    }
+
+    public void Looting()
+    {
+        Debug.Log("Loot");
+    }
+
+    public void OnDeath()
+    {
+        Debug.Log("Dead");
+    }
+
+    public void Dash()
+    {
+        Debug.Log("Dash!");
     }
 }

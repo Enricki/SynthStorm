@@ -7,25 +7,9 @@ public class ScoreUI : MonoBehaviour
 {
     [SerializeField]
     TMP_Text text;
-    public int score = 2;
 
-    private void Start()
+    public void DisplayScore(Counter counter)
     {
-        SetScore();
-    }
-
-    public void SetScore()
-    {
-        text.text = score.ToString();
-    }
-
-    public void DoubleScore()
-    {
-        score = score * 2;
-    }
-
-    public void AddScore()
-    {
-        score++;
+        text.text = counter.Score.ToString();
     }
 }

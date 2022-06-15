@@ -11,4 +11,12 @@ public class CustomList<T> : List<T>
             Add(list[i]);
         }
     }
+
+    public List<T> Merge(CustomList<T> inputList)
+    {
+        inputList.Clone(this);
+        Clear();
+        Clone(inputList);
+        return this;
+    }
 }

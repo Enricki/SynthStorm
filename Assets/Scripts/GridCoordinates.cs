@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class GridCoordinates
 {
-    private List<Vector3> cellsCoords = new List<Vector3>();
-    public List<Vector3> Coords { get => cellsCoords; }
+    private List<Vector3> coords = new List<Vector3>();
+    private Vector3[,] coordsArray;
+    private Vector2Int gridZeroIndex;
+    public List<Vector3> Coords { get => coords; }
+    public Vector3[,] CoordsArray { get => coordsArray; }
+
+    public Vector2Int GridZeroIndex { get => gridZeroIndex; }
 
     public GridCoordinates(Vector2Int gridSize, float gridSpacingOffset)
     {
+        coordsArray = new Vector3[gridSize.x, gridSize.y];
+
         Vector3 gridOrigin = -new Vector3(gridSize.x / 2, gridSize.y / 2) * gridSpacingOffset;
         Vector3 gridBorders = new Vector3(gridSize.x * gridSpacingOffset - gridSpacingOffset, gridSize.y * gridSpacingOffset - gridSpacingOffset) + gridOrigin;
         for (int y = 0; y < gridSize.y; y++)
@@ -16,8 +23,10 @@ public class GridCoordinates
             for (int x = 0; x < gridSize.x; x++)
             {
                 Vector3 cellLocalPosition = new Vector3(x * gridSpacingOffset, y * gridSpacingOffset) + gridOrigin;
-                cellsCoords.Add(cellLocalPosition);
+                coords.Add(cellLocalPosition);
+                coordsArray[x, y] = cellLocalPosition;
             }
         }
+        gridZeroIndex = new Vector2Int(gridSize.x / 2, gridSize.y / 2);
     }
 }

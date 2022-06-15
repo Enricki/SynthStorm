@@ -16,3 +16,18 @@ MonoBehaviour:
   backColor: {r: 0.7176471, g: 0.24313726, b: 0.61960787, a: 1}
   icon: {fileID: 21300000, guid: d6ccf4dc988230d448868eec228d54b9, type: 3}
   text: (x_X(
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: cc7776d41152fc9419f3a1c779c4b8b4, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: EventInit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

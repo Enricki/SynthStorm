@@ -1,64 +1,74 @@
 
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof (Wall))]
 public class WallDisplay : MonoBehaviour
 {
-    public List<WallData> wallData;
+    //public List<WallData> wallData;
 
-    private WallData activeWallData;
+    //private WallData activeWallData;
 
-    private CustomList<Vector3> randomCoords;
+    //private CustomList<Vector3> randomCoords;
+
+    Wall wall;  
 
     private List<BrickDisplay> displays = new List<BrickDisplay>();
 
-    public void ShuffleBriks()
-    {
-        int randomIndex = Random.Range(0, wallData.Count);
-        activeWallData = wallData[randomIndex];
-        Wall wall = new Wall(activeWallData);
-        for (int j = 0; j < wall.BricksInWall.Count; j++)
-        {
-            displays[j].UpdateDisplay(wall.BricksInWall[j]);
-        }
-
-
-        RandomizedList<Vector3> bufferRandom = new RandomizedList<Vector3>(randomCoords);
-        bufferRandom.Clone(randomCoords);
-        randomCoords.Clear();
-        randomCoords.Clone(bufferRandom);
-        bufferRandom.Clear();
-        for (int i = 0; i < displays.Count; i++)
-        {
-            displays[i].transform.localPosition = randomCoords[i];
-        }
-    }
-    public void InstantiateWall()
-    {
-        int randomIndex = Random.Range(0, wallData.Count);
-        activeWallData = wallData[randomIndex];
-        Wall wall = new Wall(activeWallData);
-        
-
-        GridCoordinates grid = new GridCoordinates(activeWallData.WallSize, activeWallData.SpacingOffset);
-        randomCoords = new RandomizedList<Vector3>(grid.Coords);
-        randomCoords.Clone(grid.Coords);
-
-        for (int i = 0; i < wall.BricksInWall.Count; i++)
-        {
-            BrickDisplay brick = Instantiate(activeWallData.BrickPrefab, transform);
-            brick.brickData = wall.BricksInWall[i];
-            brick.transform.localPosition = randomCoords[i];
-            displays.Add(brick);
-        }
-    }
-
     private void Start()
     {
+        wall = GetComponent<Wall>();
         InstantiateWall();
     }
+
+    //public void ShuffleBriks()
+    //{
+    //    wall.CreateWallData();
+    //    int randomIndex = Random.Range(0, wallData.Count);
+    //    activeWallData = wallData[randomIndex];
+    ////    Wall wall = new Wall(activeWallData);
+    //    for (int j = 0; j < wall.BricksInWall.Count; j++)
+    //    {
+    //        displays[j].UpdateDisplay(wall.BricksInWall[j]);
+    //    }
+
+
+    //    RandomizedList<Vector3> bufferRandom = new RandomizedList<Vector3>(randomCoords);
+    //    bufferRandom.Clone(randomCoords);
+    //    randomCoords.Clear();
+    //    randomCoords.Clone(bufferRandom);
+    //    bufferRandom.Clear();
+    //    for (int i = 0; i < displays.Count; i++)
+    //    {
+    //        displays[i].transform.localPosition = randomCoords[i];
+    //        displays[i].gameObject.SetActive(true);
+    //    }
+    //}
+
+    public void InstantiateWall()
+    {
+        for (int i = 0; i < wall.BricksInWall.Count; i++)
+        {
+            BrickDisplay brickInstance = Instantiate(wall.ActiveWallData.BrickPrefab, transform);
+            brickInstance.brickData = wall.BricksInWall[i];
+            brickInstance.transform.localPosition = wall.BricksCoords[i];
+            displays.Add(brickInstance);
+        }
+    }
+
+
+    public void UpdateVisual()
+    {
+        wall.ShuffleBriks();
+        for (int i = 0; i < displays.Count; i++)
+        {
+            displays[i].brickData = wall.BricksInWall[i];
+            displays[i].transform.localPosition = wall.BricksCoords[i];
+            displays[i].gameObject.SetActive(true);
+        }
+    }
+
+
 
 
 

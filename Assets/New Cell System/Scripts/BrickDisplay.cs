@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class BrickDisplay : MonoBehaviour
 {
@@ -21,5 +22,7 @@ public class BrickDisplay : MonoBehaviour
         background.color = brickData.BackColor;
         icon.sprite = brickData.Icon;
         brickText.text = brickData.Text;
+
+        GetComponent<TriggerObj>().SetEvents(brickData.Actions);
     }
 }

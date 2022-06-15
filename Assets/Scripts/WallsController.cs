@@ -43,8 +43,8 @@ public class WallsController : MonoBehaviour
         int randomDataIndex = Random.Range(0, levels[0].Walls.Count);
         WallDisplay wallDisplay = Instantiate(wallPrefab, transform);
         spawnPosition = wallDisplay.transform.position;
-        wallDisplay.wallData[0] = levels[0].Walls[randomDataIndex];
-        Debug.Log(wallDisplay.wallData);
+//        wallDisplay.wallData[0] = levels[0].Walls[randomDataIndex];
+//        Debug.Log(wallDisplay.wallData);
 //        wallDisplay.GenerateWall();   
         walls.Add(wallDisplay);
     }

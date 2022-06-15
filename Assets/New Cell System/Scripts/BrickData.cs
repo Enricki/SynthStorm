@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "Brick", menuName = "Data Objects/Create Brick")]
 public class BrickData : ScriptableObject
@@ -13,10 +14,14 @@ public class BrickData : ScriptableObject
     private Sprite icon;
     [SerializeField]
     private string text;
+    [Space(20)]
+    [SerializeField]
+    UnityEvent actions;
 
     public string BrickName { get => brickName; }
     public Color BackColor { get => backColor; }
     public Sprite Icon { get => icon; }
     public string Text { get => text; }
+    public UnityEvent Actions { get => actions; }
 
 }
