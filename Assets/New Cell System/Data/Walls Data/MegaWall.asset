@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MegaWall
   m_EditorClassIdentifier: 
   wallName: Mega Wall
-  brickPrefab: {fileID: 7585217145321474924, guid: d8897b00b6b709b459b9e410401e7947, type: 3}
+  brickPrefab: {fileID: 7585217145321474924, guid: e7911b754ceaefc4bb9ecc5af5363ec7, type: 3}
   wallSize: {x: 6, y: 9}
   spacingOffset: 1.1
   wallSettings:

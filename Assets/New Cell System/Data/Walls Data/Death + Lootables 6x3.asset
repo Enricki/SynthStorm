@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4132a07d622d4a54abcd9bd935848be0, type: 3}
   m_Name: Death + Lootables 6x3
   m_EditorClassIdentifier: 
-  Wallname: Death + Lootables 6/3
-  brickPrefab: {fileID: 7585217145321474924, guid: d8897b00b6b709b459b9e410401e7947, type: 3}
+  wallName: 
+  brickPrefab: {fileID: 7585217145321474924, guid: e7911b754ceaefc4bb9ecc5af5363ec7, type: 3}
   wallSize: {x: 6, y: 9}
   spacingOffset: 1.1
   wallSettings:

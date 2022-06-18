@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.OnScreen;
 
 public class InputSystem : MonoBehaviour
 {
@@ -12,24 +13,18 @@ public class InputSystem : MonoBehaviour
     Vector2 moveInput;
     float Speed = 5;
     Vector3 borders = new Vector3(4.4f, 4.4f);
-
+    public
+    OnScreenStick stick;
     private void Awake()
     {
         gameField = GetComponentInParent<GameField>();
         gameField.GetCoords();
         index.x = gameField.ZeroIndex.x;
         index.y = gameField.ZeroIndex.y;
-        Debug.Log(index);
+
         currentPos = gameField.CoordsArray[index.x, index.y];
 
         input = GetComponent<PlayerInput>();
-
-        //foreach (var item in gameField.CoordsArray)
-        //{
-        //    Debug.Log(item);
-        //}
-
-        //   input.onActionTriggered += Input_onActionTriggered;
     }
 
     private void Update()
@@ -44,34 +39,95 @@ public class InputSystem : MonoBehaviour
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, Time.deltaTime * Speed);
     }
 
+
+    List<Vector2Int> trail = new List<Vector2Int>();
+
+
     public void SetMoveInput(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<Vector2>();
 
+
+
+        moveInput = context.ReadValue<Vector2>();
+        int x = index.x;
+        int y = index.y;
         if (context.started)
         {
+            timer = -1;
+            trail.Clear();
             if (moveInput.x > 0)
             {
-                if (index.x < gameField.FieldSize.x - 1)
-                    index.x++;
+                while (x < gameField.FieldSize.x - 1)
+                {
+                    x++;
+                    trail.Add(new Vector2Int(x, y));
+                }
+
             }
             else if (moveInput.x < 0)
             {
-                if (index.x > 0)
-                    index.x--;
+                while (x > 0)
+                {
+                    x--;
+                    trail.Add(new Vector2Int(x, y));
+                }
+
             }
 
             if (moveInput.y > 0)
             {
-                if (index.y < gameField.FieldSize.y - 1)
-                    index.y++;
+                while (y < gameField.FieldSize.y - 1)
+                {
+                    y++;
+                    trail.Add(new Vector2Int(x, y));
+                }
             }
             else if (moveInput.y < 0)
             {
-                if (index.y > 0)
-                    index.y--;
+                while (y > 0)
+                {
+                    y--;
+                    trail.Add(new Vector2Int(x, y));
+                }
             }
-            Debug.Log(index);
+            Repeat();
         }
+
+        if (context.performed)
+        {
+
+        }
+
+
+        if (context.canceled)
+        {
+            StopAllCoroutines();
+            timer = -1;
+            
+        }
+    }
+
+
+    private int timer = -1;
+    private IEnumerator Timer()
+    {
+        timer++;
+        if (timer > trail.Count)
+        {
+            timer = trail.Count;
+        }
+        yield return new WaitForSeconds(0.11f);
+        if (timer < trail.Count)
+        {
+            index = trail[timer];
+        }
+        
+        Repeat();
+    }
+
+    private void Repeat()
+    {
+        StartCoroutine(Timer());
+        
     }
 }

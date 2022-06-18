@@ -341,6 +341,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1153381760}
+        m_TargetAssemblyTypeName: ScoreUI, Assembly-CSharp
+        m_MethodName: DisplayScore
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1080714826}
+          m_ObjectArgumentAssemblyTypeName: Counter, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2018867259}
+        m_TargetAssemblyTypeName: ScoreUI, Assembly-CSharp
+        m_MethodName: DisplayScore
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1080714826}
+          m_ObjectArgumentAssemblyTypeName: Counter, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &232204203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1304,7 +1328,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ed21da41664401c49b9a75e402f0bd58, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e20484d3685207d409e53b96b1dbb20b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2087,6 +2111,14 @@ PrefabInstance:
       propertyPath: Actions.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1080714826}
+    - target: {fileID: 1731578619086770152, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
+      propertyPath: restScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731578619086770152, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
+      propertyPath: restScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
 --- !u!1 &1520779990

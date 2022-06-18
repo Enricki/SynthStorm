@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brickName: Dashing Brick
   backColor: {r: 0.05882353, g: 0.74509805, b: 0.4055611, a: 1}
-  icon: {fileID: 21300000, guid: d6ccf4dc988230d448868eec228d54b9, type: 3}
+  layers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   text: BoOm!
+  actions:
+    m_PersistentCalls:
+      m_Calls: []

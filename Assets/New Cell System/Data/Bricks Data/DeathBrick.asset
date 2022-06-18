@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: DeathBrick
   m_EditorClassIdentifier: 
   brickName: Death Brick
-  backColor: {r: 0.7176471, g: 0.24313726, b: 0.61960787, a: 1}
-  icon: {fileID: 21300000, guid: d6ccf4dc988230d448868eec228d54b9, type: 3}
+  backColor: {r: 0.8679245, g: 0.1760413, b: 0.7249734, a: 1}
+  layers:
+  - {fileID: 21300000, guid: a42d3aee0670ecb43bd0a7a0fa35ff55, type: 3}
+  - {fileID: 21300000, guid: 7418e2005167f394cabd9d5ac4c3733c, type: 3}
+  - {fileID: 21300000, guid: b32070172673a3442bb84d1ad6bf3f8d, type: 3}
   text: (x_X(
   actions:
     m_PersistentCalls:

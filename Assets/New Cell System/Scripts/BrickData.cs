@@ -11,7 +11,7 @@ public class BrickData : ScriptableObject
     [SerializeField]
     private Color backColor;
     [SerializeField]
-    private Sprite icon;
+    private List<Sprite> layers;
     [SerializeField]
     private string text;
     [Space(20)]
@@ -20,7 +20,7 @@ public class BrickData : ScriptableObject
 
     public string BrickName { get => brickName; }
     public Color BackColor { get => backColor; }
-    public Sprite Icon { get => icon; }
+    public List<Sprite> Layers { get => layers; }
     public string Text { get => text; }
     public UnityEvent Actions { get => actions; }
 
