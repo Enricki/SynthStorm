@@ -8,29 +8,31 @@ public class WallData : ScriptableObject
     [SerializeField]
     private string wallName;
     [SerializeField]
-    private BrickDisplay brickPrefab;
-    [SerializeField]
     private Vector2Int wallSize;
     [SerializeField]
     private float spacingOffset;
     [Space(20)]
     [SerializeField]
     private WallSettings[] wallSettings;
+    [SerializeField]
+    private BrickDisplay brickPrefab;
 
-    public WallSettings[] WallSettings { get => wallSettings; }
     public BrickDisplay BrickPrefab { get => brickPrefab; }
     public Vector2Int WallSize { get => wallSize; }
     public float SpacingOffset { get => spacingOffset; }
+
+    public WallSettings[] WallSettings { get => wallSettings; }
 }
 
 [System.Serializable]
 public class WallSettings
 {
     [SerializeField]
-    private BrickData brickData;
+    BrickData brickData;
     [SerializeField]
     private int bricksCount;
 
     public BrickData BrickData { get => brickData; }
     public int BricksCount { get => bricksCount; }
+    
 }

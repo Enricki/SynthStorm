@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,14 +15,10 @@ public class BrickData : ScriptableObject
     private List<Sprite> layers;
     [SerializeField]
     private string text;
-    [Space(20)]
-    [SerializeField]
-    UnityEvent actions;
 
     public string BrickName { get => brickName; }
     public Color BackColor { get => backColor; }
     public List<Sprite> Layers { get => layers; }
     public string Text { get => text; }
-    public UnityEvent Actions { get => actions; }
 
 }

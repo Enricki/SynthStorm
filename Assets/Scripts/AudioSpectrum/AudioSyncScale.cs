@@ -8,6 +8,12 @@ public class AudioSyncScale : AudioSyncer
     public Vector3 beatScale;
     public Vector3 restScale;
 
+    private void OnDisable()
+    {
+        StopCoroutine("MoveToScale");
+        StartCoroutine("MoveToScale", restScale);
+    }
+
     public override void OnUpdate()
     {
         base.OnUpdate();

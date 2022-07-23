@@ -6,10 +6,18 @@ using TMPro;
 public class ScoreUI : MonoBehaviour
 {
     [SerializeField]
-    TMP_Text text;
+    TMP_Text score;
+
+    [SerializeField]
+    TMP_Text multiplier;
 
     public void DisplayScore(Counter counter)
     {
-        text.text = counter.Score.ToString();
+        score.text = counter.Score.ToString();
+    }
+
+    public void DisplayMultiplier(Counter counter)
+    {
+        multiplier.text = counter.Multiplier.ToString();
     }
 }

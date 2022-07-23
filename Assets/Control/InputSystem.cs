@@ -11,7 +11,7 @@ public class InputSystem : MonoBehaviour
     private PlayerInput input;
     Vector3 currentPos;
     Vector2 moveInput;
-    float Speed = 5;
+    float Speed = 7;
     Vector3 borders = new Vector3(4.4f, 4.4f);
     public
     OnScreenStick stick;
@@ -116,7 +116,7 @@ public class InputSystem : MonoBehaviour
         {
             timer = trail.Count;
         }
-        yield return new WaitForSeconds(0.11f);
+        yield return new WaitForSeconds(0.06f);
         if (timer < trail.Count)
         {
             index = trail[timer];

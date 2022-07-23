@@ -15,10 +15,7 @@ MonoBehaviour:
   brickName: Dashing Brick
   backColor: {r: 0.05882353, g: 0.74509805, b: 0.4055611, a: 1}
   layers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: a42d3aee0670ecb43bd0a7a0fa35ff55, type: 3}
+  - {fileID: 21300000, guid: a9a3b80a535175d4f9d5873b3b22d2e3, type: 3}
+  - {fileID: 21300000, guid: ec97c46b087b6f545a38ff6699d3bbbc, type: 3}
   text: BoOm!
-  actions:
-    m_PersistentCalls:
-      m_Calls: []

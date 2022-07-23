@@ -3,26 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GameEventListener : MonoBehaviour
-{
-    [SerializeField]
-    private GameEvent gameEvent;
+//public class GameEventListener : MonoBehaviour
+//{
+//    [SerializeField]
+//    private GameEvent gameEvent;
 
-    [SerializeField]
-    private UnityEvent Actions;
+//    [SerializeField]
+//    private UnityEvent actions;
 
-    private void OnEnable()
-    {
-        gameEvent?.AddLitener(this);
-    }
+//    public GameEvent GameEvent { get => gameEvent; }
+//    public UnityEvent Actions { get => actions; }
 
-    private void OnDisable()
-    {
-        gameEvent?.RemoveListener(this);
-    }
+//    private void OnEnable()
+//    {
+//        gameEvent?.AddLitener(this);
+//    }
 
-    public void EventRaised()
-    {
-        Actions.Invoke();
-    }
-}
+//    private void OnDisable()
+//    {
+//        gameEvent?.RemoveListener(this);
+//    }
+
+//    public void EventRaised()
+//    {
+//        actions.Invoke();
+//    }
+//}

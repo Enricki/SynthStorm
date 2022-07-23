@@ -1,74 +1,40 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Wall: MonoBehaviour
+public class Wall: DataConnector
 {
-    [SerializeField]
-    private List<WallData> wallData;
+    private List<Brick> bricks = new List<Brick>();
 
-    private WallData activeWallData;
-    private CustomList<Vector3> bricksCoords;
-    private CustomList<BrickData> bricksInWall = new CustomList<BrickData>();
+    public List<Brick> Bricks { get =>bricks; }
 
-    public CustomList<BrickData> BricksInWall { get => bricksInWall; }
-    public WallData ActiveWallData { get => activeWallData; }
-    public CustomList<Vector3> BricksCoords { get => bricksCoords; }
-
-
-    private WallData GetRandomWallData()
+    public void FillWall(WallData wallData)
     {
-        WallData data;
-        if (wallData.Count != 0)
+        for (int i = 0; i < wallData.WallSettings.Length; i++)
         {
-            int randomIndex = Random.Range(0, wallData.Count);
-            data = wallData[randomIndex];
-            return data;
-        }
-        else return null;
-    }
-
-    public void CreateWallData()
-    {
-        bricksInWall.Clear();
-        for (int i = 0; i < activeWallData.WallSettings.Length; i++)
-        {
-            for (int j = 1; j <= activeWallData.WallSettings[i].BricksCount; j++)
+            for (int j = 1; j <= wallData.WallSettings[i].BricksCount; j++)
             {
-                bricksInWall.Add(activeWallData.WallSettings[i].BrickData);
+                Brick brick = new Brick();
+                brick.SetData(wallData.WallSettings[i].BrickData);
+                bricks.Add(brick);
             }
         }
-        RandomizedList<BrickData> randomizedData = new RandomizedList<BrickData>(bricksInWall);
-        bricksInWall.Merge(randomizedData);
     }
 
+    private CustomList<Vector3> bricksCoords = new CustomList<Vector3>();
+    public CustomList<Vector3> BricksCoords { get => bricksCoords; }
 
-
-    public void CreateWallCoords()
+    public void CreateWallCoords(Vector2Int size, float offset)
     {
-        activeWallData = GetRandomWallData();
-        GridCoordinates grid = new GridCoordinates(activeWallData.WallSize, activeWallData.SpacingOffset);
-        bricksCoords = new RandomizedList<Vector3>(grid.Coords);
+        GridCoordinates grid = new GridCoordinates(size, offset);
         bricksCoords.Clone(grid.Coords);
+ 
     }
 
-    public void ShuffleBriks()
+    public void ShuffleCoords(Vector2Int size, float offset)
     {
+        CreateWallCoords(size, offset);
         RandomizedList<Vector3> bufferCoords = new RandomizedList<Vector3>(bricksCoords);
         bricksCoords.Merge(bufferCoords);
-        activeWallData = GetRandomWallData();
-        CreateWallData();
     }
-
-    private void Start()
-    {
-        activeWallData = GetRandomWallData();
-        CreateWallCoords();
-        CreateWallData();
-    }
-}
-
-struct FilledWall
-{
-    WallData data;
-    List<Vector3> coords;
 }
