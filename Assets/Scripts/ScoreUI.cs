@@ -11,6 +11,9 @@ public class ScoreUI : MonoBehaviour
     [SerializeField]
     TMP_Text multiplier;
 
+    [SerializeField]
+    TMP_Text bestScore;
+
     public void DisplayScore(Counter counter)
     {
         score.text = counter.Score.ToString();
@@ -19,5 +22,10 @@ public class ScoreUI : MonoBehaviour
     public void DisplayMultiplier(Counter counter)
     {
         multiplier.text = counter.Multiplier.ToString();
+    }
+
+    public void DisplayBestScore(Counter counter)
+    {
+        bestScore.text = counter.BestScore.ToString();
     }
 }

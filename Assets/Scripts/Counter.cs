@@ -6,11 +6,13 @@ using TMPro;
 public class Counter : MonoBehaviour
 {
     private int score = 0;
+    private int bestScore = 0;
     private int step = 1;
     private int multiplier = 1;
 
     public int Multiplier { get => multiplier; }
     public int Score { get => score; }
+    public int BestScore { get => bestScore; }
 
     public void AddScore()
     {
@@ -26,5 +28,13 @@ public class Counter : MonoBehaviour
     public void MultipleScore(int aplier)
     {
         multiplier = aplier;
+    }
+
+    public void SetBestScore()
+    {
+        if (bestScore < score)
+        {
+            bestScore = score;
+        }
     }
 }

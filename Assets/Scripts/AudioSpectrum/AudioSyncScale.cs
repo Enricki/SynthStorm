@@ -11,7 +11,10 @@ public class AudioSyncScale : AudioSyncer
     private void OnDisable()
     {
         StopCoroutine("MoveToScale");
-        StartCoroutine("MoveToScale", restScale);
+        if (isActiveAndEnabled)
+        {
+            StartCoroutine("MoveToScale", restScale);
+        }
     }
 
     public override void OnUpdate()
