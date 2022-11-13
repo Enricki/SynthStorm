@@ -24,7 +24,7 @@ public class @Controlls : IInputActionCollection, IDisposable
                     ""id"": ""49c33da2-4539-4ccc-8b9a-ba08b21f415a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Hold(duration=0.001,pressPoint=0.5)""
                 }
             ],
             ""bindings"": [

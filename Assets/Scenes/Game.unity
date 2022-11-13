@@ -1501,6 +1501,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554343993}
   m_CullTransparentMesh: 1
+--- !u!1 &709333853 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1892676955139804281, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
+  m_PrefabInstance: {fileID: 1494200037}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &757986563 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 84317197675591077, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
@@ -2464,12 +2469,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2668,6 +2673,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+        - m_Target: {fileID: 2069103787}
+          m_TargetAssemblyTypeName: ScoreUI, Assembly-CSharp
+          m_MethodName: DisplayScore
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1080714826}
+            m_ObjectArgumentAssemblyTypeName: Counter, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!114 &1153381762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2779,6 +2796,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1279208105 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -7055812450497413123, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
+  m_PrefabInstance: {fileID: 1494200037}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1452f19162292d438fa7e6ed33a1c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1299862200
 GameObject:
   m_ObjectHideFlags: 0
@@ -3443,6 +3471,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1795964963, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
+      propertyPath: eventListeners.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795964963, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
       propertyPath: eventListeners.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 6
       objectReference: {fileID: 0}
@@ -3453,7 +3485,7 @@ PrefabInstance:
     - target: {fileID: 1795964963, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
       propertyPath: eventListeners.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1795964971}
+      objectReference: {fileID: 709333853}
     - target: {fileID: 1795964963, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
       propertyPath: eventListeners.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -3471,11 +3503,19 @@ PrefabInstance:
       value: TimedEvent
       objectReference: {fileID: 0}
     - target: {fileID: 1795964963, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
+      propertyPath: eventListeners.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795964963, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
       propertyPath: eventListeners.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: set_enabled
       objectReference: {fileID: 0}
     - target: {fileID: 1795964963, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
       propertyPath: eventListeners.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Cooldown, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795964963, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
+      propertyPath: eventListeners.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: Cooldown, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1795964963, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
@@ -3493,6 +3533,10 @@ PrefabInstance:
     - target: {fileID: 1795964963, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
       propertyPath: eventListeners.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795964963, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
+      propertyPath: eventListeners.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1795964963, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
       propertyPath: eventListeners.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -3677,6 +3721,38 @@ PrefabInstance:
     - target: {fileID: 4151643742771698257, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750026037549338688, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750026037549338688, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750026037549338688, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1279208105}
+    - target: {fileID: 8750026037549338688, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750026037549338688, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750026037549338688, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750026037549338688, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: InputSystem, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750026037549338688, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
@@ -5064,7 +5140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: c94e962807dd4b0448a50284873a62a8, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 0.003921569}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5093,7 +5169,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1676156333190948669, guid: f660d0015f09db54bba8ea1d313ff360, type: 3}
   m_PrefabInstance: {fileID: 1494200037}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 709333853}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 910c64b0aa007b64297cd2574e1647e7, type: 3}
@@ -5150,7 +5226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: c94e962807dd4b0448a50284873a62a8, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 0.003921569}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5320,6 +5396,10 @@ PrefabInstance:
     - target: {fileID: 8933397665164296443, guid: ce805d9eade7a8c46b2d5b23b6e96267, type: 3}
       propertyPath: m_Name
       value: Wallanator
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933397665164296443, guid: ce805d9eade7a8c46b2d5b23b6e96267, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce805d9eade7a8c46b2d5b23b6e96267, type: 3}

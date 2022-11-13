@@ -18,13 +18,15 @@ public class GridCoordinates
 
         Vector3 gridOrigin = -new Vector3(gridSize.x / 2, gridSize.y / 2) * gridSpacingOffset;
         Vector3 gridBorders = new Vector3(gridSize.x * gridSpacingOffset - gridSpacingOffset, gridSize.y * gridSpacingOffset - gridSpacingOffset) + gridOrigin;
-        for (int x = 0; x < gridSize.x; x++)
+        for (int y = 0; y < gridSize.y; y++)
         {
-            for (int y = 0; y < gridSize.y; y++)
+            for (int x = 0; x < gridSize.x; x++)
             {
                 Vector3 cellLocalPosition = new Vector3(x * gridSpacingOffset, y * gridSpacingOffset) + gridOrigin;
                 coords.Add(cellLocalPosition);
                 coordsArray[x, y] = cellLocalPosition;
+
+            //    Debug.Log("[" + x + "," + y + "]" + " " + coordsArray[x, y]);
             }
         }
         gridZeroIndex = new Vector2Int(gridSize.x / 2, gridSize.y / 2);

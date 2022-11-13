@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 using UnityEngine.InputSystem.OnScreen;
 
 public class InputSystem : MonoBehaviour
@@ -11,123 +12,129 @@ public class InputSystem : MonoBehaviour
     private PlayerInput input;
     Vector3 currentPos;
     Vector2 moveInput;
-    float Speed = 7;
+    float Speed = 5;
     Vector3 borders = new Vector3(4.4f, 4.4f);
     public
     OnScreenStick stick;
+
+
+
+    Vector2Int targetIndexer;
+    Vector3 target;
     private void Awake()
     {
         gameField = GetComponentInParent<GameField>();
         gameField.GetCoords();
         index.x = gameField.ZeroIndex.x;
         index.y = gameField.ZeroIndex.y;
-
+        
         currentPos = gameField.CoordsArray[index.x, index.y];
-
         input = GetComponent<PlayerInput>();
+
+
+        targetIndexer.x = gameField.ZeroIndex.x;
+        targetIndexer.y = gameField.ZeroIndex.y;
+        target = gameField.CoordsArray[targetIndexer.x, targetIndexer.y];
+
     }
+
 
     private void Update()
     {
         ChangePosition();
     }
 
-    void ChangePosition()
+
+
+
+    void OnDrawGizmos()
     {
-        Vector3 target;
-        target = gameField.CoordsArray[index.x, index.y];
-        transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, Time.deltaTime * Speed);
+        //// Draws a 5 unit long red line in front of the object
+        //Gizmos.color = Color.red;
+        //Vector3 direction = target;
+        //Gizmos.DrawRay(transform.position, direction);
     }
 
 
-    List<Vector2Int> trail = new List<Vector2Int>();
-
-
-    public void SetMoveInput(InputAction.CallbackContext context)
+    void ChangePosition()
     {
-
-
-
+        target = gameField.CoordsArray[targetIndexer.x, targetIndexer.y];
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, Time.deltaTime * Speed);
+    }
+    public void OnMove(InputAction.CallbackContext context)
+    {
         moveInput = context.ReadValue<Vector2>();
-        int x = index.x;
-        int y = index.y;
+
         if (context.started)
         {
-            timer = -1;
-            trail.Clear();
-            if (moveInput.x > 0)
-            {
-                while (x < gameField.FieldSize.x - 1)
-                {
-                    x++;
-                    trail.Add(new Vector2Int(x, y));
-                }
 
-            }
-            else if (moveInput.x < 0)
-            {
-                while (x > 0)
-                {
-                    x--;
-                    trail.Add(new Vector2Int(x, y));
-                }
-
-            }
-
-            if (moveInput.y > 0)
-            {
-                while (y < gameField.FieldSize.y - 1)
-                {
-                    y++;
-                    trail.Add(new Vector2Int(x, y));
-                }
-            }
-            else if (moveInput.y < 0)
-            {
-                while (y > 0)
-                {
-                    y--;
-                    trail.Add(new Vector2Int(x, y));
-                }
-            }
-            Repeat();
         }
 
         if (context.performed)
         {
-
+            ChangeTarget(moveInput);
         }
-
 
         if (context.canceled)
         {
             StopAllCoroutines();
-            timer = -1;
-            
+
         }
     }
 
 
-    private int timer = -1;
-    private IEnumerator Timer()
+    void ChangeTarget(Vector2 direction)
     {
-        timer++;
-        if (timer > trail.Count)
-        {
-            timer = trail.Count;
-        }
-        yield return new WaitForSeconds(0.06f);
-        if (timer < trail.Count)
-        {
-            index = trail[timer];
-        }
-        
-        Repeat();
+        StartCoroutine(ChangeCoords(direction));
     }
 
-    private void Repeat()
+    private IEnumerator ChangeCoords(Vector2 direction)
     {
-        StartCoroutine(Timer());
-        
+        if (direction.x > 0)
+        {
+            if (targetIndexer.x >= gameField.FieldSize.x - 1)
+            {
+                targetIndexer.x = gameField.FieldSize.x - 1;
+            }
+            else
+            {
+                targetIndexer.x++;
+            }
+        }
+        else if (direction.x < 0)
+        {
+            if (targetIndexer.x <= 0)
+            {
+                targetIndexer.x = 0;
+            }
+            else
+            {
+                targetIndexer.x--;
+            }
+        }
+        else if (direction.y > 0)
+        {
+            if (targetIndexer.y >= gameField.FieldSize.y - 1)
+            {
+                targetIndexer.y = gameField.FieldSize.y - 1;
+            }
+            else
+            {
+                targetIndexer.y++;
+            }
+        }
+        else if (direction.y < 0)
+        {
+            if (targetIndexer.y <= 0)
+            {
+                targetIndexer.y = 0;
+            }
+            else
+            {
+                targetIndexer.y--;
+            }
+        }
+        yield return new WaitForSeconds(0.16f);
+        ChangeTarget(direction);
     }
 }
