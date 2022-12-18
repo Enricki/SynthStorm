@@ -7,16 +7,18 @@ public class GridCoordinates
     private List<Vector3> coords = new List<Vector3>();
     private Vector3[,] coordsArray;
     private Vector2Int gridZeroIndex;
+    private Vector3 gridOrigin;
     public List<Vector3> Coords { get => coords; }
     public Vector3[,] CoordsArray { get => coordsArray; }
 
     public Vector2Int GridZeroIndex { get => gridZeroIndex; }
+    public Vector3 GridOrigin { get => gridOrigin; }
 
     public GridCoordinates(Vector2Int gridSize, float gridSpacingOffset)
     {
         coordsArray = new Vector3[gridSize.x, gridSize.y];
 
-        Vector3 gridOrigin = -new Vector3(gridSize.x / 2, gridSize.y / 2) * gridSpacingOffset;
+        gridOrigin = -new Vector3(gridSize.x / 2, gridSize.y / 2) * gridSpacingOffset;
         Vector3 gridBorders = new Vector3(gridSize.x * gridSpacingOffset - gridSpacingOffset, gridSize.y * gridSpacingOffset - gridSpacingOffset) + gridOrigin;
         for (int y = 0; y < gridSize.y; y++)
         {

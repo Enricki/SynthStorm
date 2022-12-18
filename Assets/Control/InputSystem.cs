@@ -2,73 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
 using UnityEngine.InputSystem.OnScreen;
 
 public class InputSystem : MonoBehaviour
 {
-    GameField gameField;
-    Vector2Int index;
-    private PlayerInput input;
-    Vector3 currentPos;
-    Vector2 moveInput;
-    float Speed = 5;
-    Vector3 borders = new Vector3(4.4f, 4.4f);
-    public
-    OnScreenStick stick;
+    public OnScreenStick stick;
 
+    [SerializeField]
+    private float Speed = 5;
 
+    private GameField gameField;
+    private Vector2 moveInput;
+    private Vector2Int targetIndexer;
+    private Vector3 target;
 
-    Vector2Int targetIndexer;
-    Vector3 target;
     private void Awake()
     {
         gameField = GetComponentInParent<GameField>();
         gameField.GetCoords();
-        index.x = gameField.ZeroIndex.x;
-        index.y = gameField.ZeroIndex.y;
-        
-        currentPos = gameField.CoordsArray[index.x, index.y];
-        input = GetComponent<PlayerInput>();
-
 
         targetIndexer.x = gameField.ZeroIndex.x;
         targetIndexer.y = gameField.ZeroIndex.y;
         target = gameField.CoordsArray[targetIndexer.x, targetIndexer.y];
-
     }
-
 
     private void Update()
     {
-        ChangePosition();
+        Move();
     }
 
-
-
-
-    void OnDrawGizmos()
-    {
-        //// Draws a 5 unit long red line in front of the object
-        //Gizmos.color = Color.red;
-        //Vector3 direction = target;
-        //Gizmos.DrawRay(transform.position, direction);
-    }
-
-
-    void ChangePosition()
+    //Move Player in space from start postion to target cell;
+    void Move()
     {
         target = gameField.CoordsArray[targetIndexer.x, targetIndexer.y];
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, Time.deltaTime * Speed);
     }
+
+    //Check if input is on and set target direction (Must be lincked in Inspector);
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-
-        if (context.started)
-        {
-
-        }
 
         if (context.performed)
         {
@@ -78,16 +51,16 @@ public class InputSystem : MonoBehaviour
         if (context.canceled)
         {
             StopAllCoroutines();
-
         }
     }
 
-
+    //Recursion method for ChangeCoords
     void ChangeTarget(Vector2 direction)
     {
         StartCoroutine(ChangeCoords(direction));
     }
 
+    //Change coordinates relative to the direction
     private IEnumerator ChangeCoords(Vector2 direction)
     {
         if (direction.x > 0)

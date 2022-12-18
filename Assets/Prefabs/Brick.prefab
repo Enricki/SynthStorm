@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2158286863813281855}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5080938055892555851}
   m_RootOrder: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -98,7 +98,6 @@ GameObject:
   - component: {fileID: 6052816071759345448}
   - component: {fileID: 7498403415272206574}
   - component: {fileID: -9107225400556594224}
-  - component: {fileID: 5112941260881073947}
   m_Layer: 6
   m_Name: Brick
   m_TagString: Untagged
@@ -115,7 +114,7 @@ Transform:
   m_GameObject: {fileID: 7530876397527937428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 6847342659668402898}
   - {fileID: 9127776658902772092}
@@ -147,7 +146,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.7}
+  m_Size: {x: 0.3, y: 0.3}
   m_EdgeRadius: 0
 --- !u!82 &-8706972540747663777
 AudioSource:
@@ -325,22 +324,8 @@ MonoBehaviour:
   timeStep: 1
   timeToBeat: 0.05
   restSmoothTime: 0.5
-  beatScale: {x: 0.5, y: 0.5, z: 0.8}
-  restScale: {x: 0.25, y: 0.25, z: 0.5}
---- !u!114 &5112941260881073947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7530876397527937428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fed445eeae9b4b14fb2aef5e224dc356, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _display: {fileID: 7406305383868169531}
-  _collider: {fileID: -6392085792520652296}
+  beatScale: {x: 0.49, y: 0.49, z: 0.8}
+  restScale: {x: 0.4, y: 0.4, z: 0.5}
 --- !u!1 &8018855983627387667
 GameObject:
   m_ObjectHideFlags: 0

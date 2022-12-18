@@ -36,15 +36,16 @@ public class Display : MonoBehaviour
         }
     }
 
-    public void SetVisibilityLevel(float alpha)
+    public void UpdateDisplay(BrickData Data)
     {
-        for (int i = 0; i < spriteRenderers.Count; i++)
+        brickData = Data;
+        for (int i = 0; i < brickData.Layers.Count; i++)
         {
             if (brickData.Layers[i] != null)
             {
                 SpriteRenderer renderer = spriteRenderers[i];
-                Color c = renderer.color;
-                renderer.color = new Color(c.r, c.g, c.b, alpha);
+                renderer.sprite = brickData.Layers[i];
+                renderer.color = brickData.Colors[i];
             }
         }
     }

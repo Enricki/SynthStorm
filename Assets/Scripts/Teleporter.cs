@@ -23,7 +23,7 @@ public class Teleporter : MonoBehaviour
     public void Teleport()
     {
         transform.position = regularTPPosition;
-        Debug.Log("Teleported! " + startPosition);
+        Debug.Log("Teleported! " + regularTPPosition);
 
     }
 

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 290dede1f66fff047bd883510a2beed8, type: 3}
+  m_Name: I
+  m_EditorClassIdentifier: 
+  stackName: 
+  stackSizeX: 5
+  stackSizeY: 5
+  stackSpacingOffset: 0.9
+  stackVariants:
+  - itemPrefab: {fileID: 1412607199271318149, guid: 6f3680cffc6d1a44b82d98e44bb01f28, type: 3}
+    itemCount: 2
+  brickData: {fileID: 11400000, guid: 6575965b459c0354a9f2c8b83a30998a, type: 2}
+  coordsCount: 0
+  bBools: 00000000010000000001000000000100000000010000000000

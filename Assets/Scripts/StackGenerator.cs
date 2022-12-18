@@ -5,7 +5,7 @@ using UnityEngine;
 public class StackGenerator : MonoBehaviour
 {
     [SerializeField]
-    Stack stack;
+    StackData stack;
 
     CustomList<Vector3> coords;
 
@@ -38,18 +38,18 @@ public class StackGenerator : MonoBehaviour
     {
         
         GenerateCoords();
-        StackVariant[] stackVariant = stack.StackVariant;
+//        StackVariant[] stackVariant = stack.StackVariant;
 
-        for (int i = 0; i < stackVariant.Length; i++)
-        {
-            for (int j = 0; j < stackVariant[i].ItemCount; j++)
-            {
-                GameObject go = Instantiate(stack.StackVariant[i].ItemPrefab, transform);
-                go.transform.localPosition = coords[0];
-                bricks.Add(go);
-                coords.RemoveAt(0);
-            }
-        }
+//        for (int i = 0; i < stackVariant.Length; i++)
+//        {
+//            for (int j = 0; j < stackVariant[i].ItemCount; j++)
+ //           {
+//                GameObject go = Instantiate(stack.StackVariant[i].ItemPrefab, transform);
+//                go.transform.localPosition = coords[0];
+//                bricks.Add(go);
+//                coords.RemoveAt(0);
+//            }
+ //       }
     }
     private void Start()
     {

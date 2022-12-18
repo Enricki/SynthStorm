@@ -2,34 +2,79 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Wall", menuName = "Data Objects/Create Stack")]
-public class Stack : ScriptableObject
+public class Stack : MonoBehaviour
 {
     [SerializeField]
-    private string stackName;
+    private GameObject CubePrefab;
+
     [SerializeField]
-    private Vector2Int stackSize;
+    private StackData[] stackData;
+
     [SerializeField]
-    private float stackSpacingOffset;
-    [SerializeField]
-    StackVariant[] stackVariants;
+    private bool Rotatable;
 
+    private StackData activeStackData;
 
-    public Vector2Int StackSize { get => stackSize; }
-    public float StackSpacingOffset { get => stackSpacingOffset; }
+    private List<GameObject> Cubes = new List<GameObject>();
 
-    public StackVariant[] StackVariant { get => stackVariants; }
-}
+    private void Awake()
+    {
+        UpdateStack();
+    }
 
-[System.Serializable]
-public struct StackVariant
-{
-    [SerializeField]
-    private GameObject itemPrefab;
-    [SerializeField]
-    private int itemCount;
+    public void UpdateStack()
+    {
+        ChooseRandomData();
 
-    public int ItemCount { get => itemCount; }
-    public GameObject ItemPrefab { get => itemPrefab; }
+        Vector2Int size = activeStackData.StackSize;
+        float offset = activeStackData.StackSpacingOffset;
+        GridCoordinates coordinates = new GridCoordinates(size, offset);
+        if (Cubes.Count == 0)
+        {
+            for (int i = 0; i < coordinates.Coords.Count; i++)
+            {
+                GameObject newObj = Instantiate(CubePrefab, transform);
+                newObj.transform.localPosition = coordinates.Coords[i];
+                newObj.name = activeStackData.name;
+                newObj.GetComponent<Display>().UpdateDisplay(activeStackData.BrickData);
+                Cubes.Add(newObj);
+            }
+        }
+        UpdateData();
 
+        if (Rotatable)
+        {
+            Rotate();
+        }
+    }
+
+    void ChooseRandomData()
+    {
+        activeStackData = stackData[Random.Range(0, stackData.Length)];
+    }
+
+    void UpdateData()
+    {
+        bool[] activeCells = activeStackData.bBools;
+        for (int i = 0; i < Cubes.Count; i++)
+        {
+            Cubes[i].name = activeStackData.name;
+            Cubes[i].GetComponent<Display>().UpdateDisplay(activeStackData.BrickData);
+            if (activeCells[i])
+            {
+                Cubes[i].SetActive(true);
+            }
+            else
+            {
+                Cubes[i].SetActive(false);
+            }
+
+        }
+    }
+
+    void Rotate()
+    {
+        int[] rotAngle = new int[4] { 0, 180, -90, 90 };
+        transform.Rotate(new Vector3(0,0,rotAngle[Random.Range(0, 3)]));
+    }
 }

@@ -20,5 +20,4 @@ public class BrickData : ScriptableObject
     public List<Color> Colors { get => colors; }
     public List<Sprite> Layers { get => layers; }
     public string Text { get => text; }
-
 }
